@@ -17,11 +17,11 @@ export default function AppLayout({ children }) {
         <Container>{children}</Container>
       </main>
 
-      <footer className="app_footer">
+      {/* <footer className="app_footer">
         <Container>
           <p>Powered by @sahel</p>
         </Container>
-      </footer>
+      </footer> */}
 
       <style jsx global>{`
         html,

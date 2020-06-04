@@ -7,7 +7,7 @@ module.exports = {
   env: {
     ENV: "development",
     HOST: "localhost",
-    PORT: 3002,
+    PORT: 3000,
     PORT_API: 3001,
   },
 };
