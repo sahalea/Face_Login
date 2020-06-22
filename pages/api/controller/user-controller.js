@@ -16,7 +16,7 @@ const multer = require("multer");
 const userRoutes = express.Router();
 
 //folders
-const rootFolder = join(__dirname, "../../");
+const rootFolder = join(__dirname, "../../../public");
 const dataFolder = join(rootFolder, "data");
 const usersFolder = join(dataFolder, "users");
 

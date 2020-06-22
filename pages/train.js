@@ -4,6 +4,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import AppLayout from "./component/layout";
 import api from "./util/camera";
 import apiUser from "./util/user";
+import { useRouter } from "next/router";
 
 export default class Train extends React.Component {
   state = {
@@ -48,21 +49,25 @@ export default class Train extends React.Component {
               canvas: img,
               options,
             });
-            // detections.forEach((d) => {
-            //   descriptors.push({
-            //     path: photo,
-            //     descriptor: d.descriptor,
-            //   });
-            // });
+            if (detections.length > 0) {
+              detections.forEach((d) => {
+                descriptors.push({
+                  path: photo,
+                  descriptor: d.descriptor,
+                });
+              });
+            }
           })
         );
-        // faces.push({
-        //   user: user.name,
-        //   descriptors,
-        // });
+        faces.push({
+          user: user.name,
+          descriptors,
+        });
       })
     );
-    // this.saveface(faces);
+
+    console.log(faces);
+    this.saveface(faces);
   }
 
   render() {
@@ -81,10 +86,7 @@ export default class Train extends React.Component {
                 <div>
                   {u.photos.map((p, idx) => (
                     <figure key={p}>
-                      <img
-                        id={`${u.name}${idx}`}
-                        src={`http://localhost:3001${p}`}
-                      />
+                      <img id={`${u.name}${idx}`} src={`${p}`} />
                     </figure>
                   ))}
                 </div>

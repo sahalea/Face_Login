@@ -5,7 +5,7 @@ const faceapi = require("face-api.js");
 const modelRoutes = express.Router();
 
 //folders & model file
-const rootFolder = join(__dirname, "../../");
+const rootFolder = join(__dirname, "../../../public");
 const dataFolder = join(rootFolder, "data");
 const facesFileName = "faces.json";
 
