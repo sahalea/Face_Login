@@ -27,7 +27,7 @@ export default function Home() {
             </h4>
           </section>
           <p className="btn btn-success">
-            <Link href="/users">
+            <Link href="/test">
               <a style={{ color: "#FFF" }}>Register User</a>
             </Link>
           </p>

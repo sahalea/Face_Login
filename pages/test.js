@@ -44,7 +44,6 @@ export default class Viewrec extends React.Component {
     self.interval = setInterval(async () => {
       const t0 = performance.now();
       canvasCtx.drawImage(videoDiv, 0, 0, 320, 247);
-
       const detections = await api.getFaceDetections({
         canvas: canvasDiv,
         options,
@@ -58,7 +57,14 @@ export default class Viewrec extends React.Component {
         var eye_right = this.getMeanPosition(
           detections[0].landmarks.getRightEye()
         );
-        this.eyeBlink(detections[0].landmarks.getLeftEye());
+        // let leftEye = this.eyeBlink(detections[0].landmarks.getLeftEye());
+        // let rightEyr = this.eyeBlink(detections[0].landmarks.getRightEye());
+
+        // console.log("left: " + leftEye);
+        //console.log("Right " + rightEyr);
+
+        let mouthOPen = this.eyeBlink(detections[0].landmarks.getMouth());
+        console.log("mouth: " + mouthOPen);
 
         var nose = this.getMeanPosition(detections[0].landmarks.getNose());
         var mouth = this.getMeanPosition(detections[0].landmarks.getMouth());
@@ -90,16 +96,16 @@ export default class Viewrec extends React.Component {
         //   rx // Closest to 0.5 is looking forward, closest to 0 is looking up
         //   // rz
         // );
-        //   detections.forEach(async (detection) => {
-        //     api.draw({
-        //       canvasDiv,
-        //       canvasCtx,
-        //       detection,
-        //       options,
-        //     });
-        //   });
+        detections.forEach(async (detection) => {
+          api.draw({
+            canvasDiv,
+            canvasCtx,
+            detection,
+            options,
+          });
+        });
       }
-    }, 1000 / 5);
+    }, 1000 / 1);
   }
 
   eyeBlink(arr) {
@@ -131,7 +137,7 @@ export default class Viewrec extends React.Component {
     );
 
     let ear = (2 * (maxY - minY)) / (maxX - minX);
-    console.log(ear);
+    return ear;
   }
 
   betweenNumber(val, a, b) {

@@ -148,7 +148,6 @@ export default {
     }
 
     if (options.landmarksEnabled && detection.landmarks) {
-      console.log(detection.landmarks);
       faceapi.draw.drawFaceLandmarks(canvasDiv, detection.landmarks, {
         lineWidth: state.landmarks.lineWidth,
         drawLines: state.landmarks.drawLines,
