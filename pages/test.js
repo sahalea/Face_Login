@@ -9,7 +9,7 @@ export default class Viewrec extends React.Component {
     this.liveCanvas = React.createRef();
     this.state = {
       interval: null,
-      errortext: "HI hlloebjfbb",
+      errortext: "",
     };
   }
 
@@ -82,6 +82,12 @@ export default class Viewrec extends React.Component {
           this.betweenNumber(rxVal, 29, 51) === true
         ) {
           this.setState({ errortext: "" });
+          const video = videoDiv;
+          // const canvas = this.imageCanvasRef.current;
+          //const canvasCtx = canvasCtx;
+          canvasCtx.drawImage(video, 0, 0, 320, 247);
+          const content = canvasDiv.toDataURL("image/jpeg");
+          console.log(content);
         } else {
           this.setState({ errortext: "Please correct head position" });
         }
@@ -156,6 +162,7 @@ export default class Viewrec extends React.Component {
       .reduce((a, b) => [a[0] + b[0], a[1] + b[1]])
       .map((a) => a / l.length);
   }
+
   render() {
     return (
       <div>
